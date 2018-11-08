@@ -42,7 +42,7 @@ for component_index in range(len(components)):
             else:
                 continue
 
-completed_components = Counter(components)
+components_on_line = Counter(components)
 unprocessed_A = 0
 unprocessed_B = 0
 unprocessed_P = 0
@@ -60,8 +60,9 @@ for workers in positions:
 print(components)
 print(positions)
 unprocessed = unprocessed_A + unprocessed_B + unprocessed_P
-print(f"Products assembled: {completed_components['P']}")
-print(f"Components left unprocessed {unprocessed + completed_components['A'] + completed_components['B']}")
-print(f"A components left unprocessed {completed_components['A'] + unprocessed_A}")
-print(f"B components left unprocessed {completed_components['B'] + unprocessed_B}")
-print(f"Assembled or part assembled products not placed on production line {completed_components['P'] + unprocessed_P}")
+print(f"Products assembled: {components_on_line['P']}")
+print(f"Components left unprocessed {unprocessed + components_on_line['A'] + components_on_line['B']}")
+print(f"A components left unprocessed {components_on_line['A'] + unprocessed_A}")
+print(f"B components left unprocessed {components_on_line['B'] + unprocessed_B}")
+print(f"Assembled but not on production line {unprocessed_P}")
+print(f"Total assembled including those not on production line {components_on_line['P'] + unprocessed_P}")
